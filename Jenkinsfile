@@ -4,25 +4,33 @@ pipeline {
 	NAME='SUMEET'
 	}
 	stages {
-		stage('Building and Running the image'){
-		steps {
-				bat 'cd /d "f:/dev/docker-python"'
-                bat 'docker run --rm  -e tags=%tags% sumeet/docker-python'
+		stage('Getting the Source Code from Github'){
+			steps {
+				git 'https://github.com/sumeet0420/docker-python.git'
+		}
+	}
+		stage('Building and Running the docker image'){
+			steps {
+				if(isUnit()){
+				sh 'docker run --rm  -e tags=$tags sumeet/docker-python'
+				} else {}
+				bat 'docker run --rm  -e tags=%tags% sumeet/docker-python'
+				}
 			}
 		}
 	}
 	post {
 		always {
-		echo 'Build ran'
+		echo 'Build ran....'
 		}
 		success {
-		echo 'and it was a success'
+		echo 'Build ran successfully'
 		}
 		failure {
-		echo 'and it was a failure'
+		echo 'Build falied.'
 		}
 		unstable {
-		echo 'and it was unstable'
+		echo 'Build is unstable.'
 		}
 	}
 }
