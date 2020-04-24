@@ -1,5 +1,5 @@
 def before_all(context):
-	print(f"Running before all")
+	print(f"Running before all always")
 
 def before_feature(context, feature):
 	print(f"Running before all features")
