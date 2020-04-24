@@ -2,7 +2,9 @@
 
 ## The framework has Dockerfile to execute all the tests using python image.
 ### The environment variable tags can be used to trigger specifics cases, else all cases will be triggered
-`docker run --rm  -e tags=TAGS sumeet/docker-python`
+
+- `docker build -t sumeet/docker-python .`
+- `docker run --rm  -e tags=TAGS sumeet/docker-python`
 
 ## The shell script can be used to trigger all these commands automatically...
 
