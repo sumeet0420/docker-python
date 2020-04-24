@@ -1,5 +1,9 @@
 # Python With 'Behave' Framework for BDD
 
+## The framework has Dockerfile to execute all the tests using python image.
+### The environment variable tags can be used to trigger specifics cases, else all cases will be triggered
+`docker run --rm  -e tags=TAGS sumeet/docker-python`
+
 ## The shell script can be used to trigger all these commands automatically...
 
 ## Below command can be used to execute the scenarios
@@ -26,7 +30,7 @@
 `behave --format "json.pretty" --tags="regression,smoke" --expand --verbose --junit`
 
 ### Learning Source
-	* [Udemy Course] (https://www.udemy.com/course/bdd-testing-with-python/)
-	* [Behave Official Documentation] (https://behave.readthedocs.io/en/latest/)
+- [Udemy Course] (https://www.udemy.com/course/bdd-testing-with-python/)
+- [Behave Official Documentation] (https://behave.readthedocs.io/en/latest/)
 
 ### It doesn't implement any assertion or any python codes...
