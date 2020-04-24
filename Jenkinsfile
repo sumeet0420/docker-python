@@ -13,11 +13,11 @@ pipeline {
 			steps {
 				if(isUnit()){
 				sh 'docker run --rm  -e tags=$tags sumeet/docker-python'
-				} else {}
+				} else {
 				bat 'docker run --rm  -e tags=%tags% sumeet/docker-python'
 				}
 			}
-		}
+		}	
 	}
 	post {
 		always {
