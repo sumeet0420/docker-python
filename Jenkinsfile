@@ -1,7 +1,7 @@
 pipeline { 
 	agent any
 	environment {
-	NAME='SUMEET'
+		NAME='SUMEET'
 	}
 	stages {
 		stage('Getting the Source Code from Github'){
@@ -10,27 +10,30 @@ pipeline {
 		}
 	}
 		stage('Building and Running the docker image'){
-			steps {
-				if(isUnit()){
-				sh 'docker run --rm  -e tags=$tags sumeet/docker-python'
-				} else {
-				bat 'docker run --rm  -e tags=%tags% sumeet/docker-python'
+				steps {
+					script{
+					if(isUnix()){
+						sh 'docker run --rm  -e tags=$tags sumeet/docker-python'
 				}
-			}
+					else {
+						bat 'docker run --rm  -e tags=%tags% sumeet/docker-python'
+						}	    
+				}
+			}	
 		}	
 	}
 	post {
 		always {
-		echo 'Build ran....'
-		}
+			echo 'Build ran....'
+			}
 		success {
-		echo 'Build ran successfully'
-		}
+			echo 'Build ran successfully'
+			}
 		failure {
-		echo 'Build falied.'
-		}
+			echo 'Build falied.'
+			}
 		unstable {
-		echo 'Build is unstable.'
+			echo 'Build is unstable.'
 		}
 	}
 }
